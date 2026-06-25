@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rastreio de PHDA</title>
+    <title>Rastreio de PHDA | Susana Coelho Florêncio</title>
     <style>
         :root {
-            --primary-color: #4f46e5; /* Azul/Roxo profissional */
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #1e293b;
+            --bg-color: #ffffff;
+            --text-main: #2b2b2b;
+            --text-muted: #666666;
+            --border-color: #cccccc;
+            --accent-slate: #2c3e50; /* Tom azul-escuro sóbrio */
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,30 +26,44 @@
         }
 
         .quiz-container {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            max-width: 500px;
+            background-color: #ffffff;
+            padding: 40px 30px;
+            max-width: 520px;
             width: 100%;
             text-align: center;
         }
 
-        h2 { color: var(--primary-color); margin-bottom: 20px; }
+        /* Cabeçalhos estilo minimalista/caixa-alta igual ao site */
+        h2 { 
+            font-size: 13px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        
+        /* Texto da pergunta */
+        p.question-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 35px;
+        }
         
         .progress-bar {
-            height: 6px;
-            background-color: #e2e8f0;
-            border-radius: 3px;
-            margin-bottom: 30px;
+            height: 3px;
+            background-color: #eaeaea;
+            border-radius: 2px;
+            margin-bottom: 40px;
             overflow: hidden;
         }
 
         .progress {
             height: 100%;
-            background-color: var(--primary-color);
+            background-color: var(--accent-slate);
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
         }
 
         .question { display: none; }
@@ -57,41 +72,65 @@
         .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
             margin-top: 25px;
         }
 
-        button {
-            padding: 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            background: white;
-            font-size: 15px;
+        /* Botões ovais idênticos aos menus da imagem image_72e7a2.png */
+        button.option-btn {
+            padding: 12px 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            background: #ffffff;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            color: var(--text-color);
+            transition: all 0.25s ease;
+            color: var(--text-main);
         }
 
-        button:hover {
-            border-color: var(--primary-color);
-            background-color: #f5f3ff;
+        button.option-btn:hover {
+            border-color: #000000;
+            background-color: #f9f9f9;
         }
 
+        /* Distintivos de resultado minimalistas */
+        .result-badge {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            margin: 25px 0;
+            padding: 12px 25px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        
+        .prob-baixa { color: #2e7d32; border: 1px solid #a7f3d0; background-color: #f0fdf4; }
+        .prob-moderada { color: #b7791f; border: 1px solid #fef08a; background-color: #fefce8; }
+        .prob-elevada { color: #c53030; border: 1px solid #fecaca; background-color: #fef2f2; }
+
+        /* Botão do WhatsApp adaptado ao formato oval da tua identidade */
         .whatsapp-btn {
             background-color: #25D366;
             color: white;
             border: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             font-weight: bold;
             text-decoration: none;
-            padding: 14px;
-            border-radius: 8px;
+            padding: 14px 30px;
+            border-radius: 30px;
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 25px;
             transition: background 0.2s;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.15);
         }
 
         .whatsapp-btn:hover { background-color: #128C7E; }
-        .disclaimer { font-size: 12px; color: #64748b; margin-top: 20px; }
+        .disclaimer { font-size: 11px; color: var(--text-muted); margin-top: 35px; line-height: 1.5; }
     </style>
 </head>
 <body>
@@ -102,67 +141,69 @@
     <!-- Pergunta 1 -->
     <div class="question active" data-index="1">
         <h2>Pergunta 1 de 4</h2>
-        <p>Com que frequência tens dificuldade em manter a concentração em tarefas repetitivas ou aborrecidas?</p>
+        <p class="question-text">Com que frequência tens dificuldade em manter a concentração em tarefas repetitivas ou aborrecidas?</p>
         <div class="btn-container">
-            <button onclick="nextQuestion(0)">Nunca</button>
-            <button onclick="nextQuestion(1)">Raramente</button>
-            <button onclick="nextQuestion(2)">Por vezes</button>
-            <button onclick="nextQuestion(3)">Frequentemente</button>
-            <button onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
+            <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
+            <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
+            <button class="option-btn" onclick="nextQuestion(2)">Às vezes</button>
+            <button class="option-btn" onclick="nextQuestion(3)">Frequentemente</button>
+            <button class="option-btn" onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
         </div>
     </div>
 
     <!-- Pergunta 2 -->
     <div class="question" data-index="2">
         <h2>Pergunta 2 de 4</h2>
-        <p>Com que frequência te esqueces de compromissos, tarefas diárias ou de onde deixaste objetos importantes?</p>
+        <p class="question-text">Com que frequência te esqueces de compromissos, tarefas diárias ou de onde deixaste objetos importantes?</p>
         <div class="btn-container">
-            <button onclick="nextQuestion(0)">Nunca</button>
-            <button onclick="nextQuestion(1)">Raramente</button>
-            <button onclick="nextQuestion(2)">Às vezes</button>
-            <button onclick="nextQuestion(3)">Frequentemente</button>
-            <button onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
+            <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
+            <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
+            <button class="option-btn" onclick="nextQuestion(2)">Às vezes</button>
+            <button class="option-btn" onclick="nextQuestion(3)">Frequentemente</button>
+            <button class="option-btn" onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
         </div>
     </div>
 
     <!-- Pergunta 3 -->
     <div class="question" data-index="3">
         <h2>Pergunta 3 de 4</h2>
-        <p>Sentes uma necessidade constante de te mexer, mexer as mãos/pés ou sentes uma agitação interior difícil de controlar?</p>
+        <p class="question-text">Sentes uma necessidade constante de te mexer, mexer as mãos/pés ou sentes uma agitação interior difícil de controlar?</p>
         <div class="btn-container">
-            <button onclick="nextQuestion(0)">Nunca</button>
-            <button onclick="nextQuestion(1)">Raramente</button>
-            <button onclick="nextQuestion(2)">Às vezes</button>
-            <button onclick="nextQuestion(3)">Frequentemente</button>
-            <button onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
+            <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
+            <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
+            <button class="option-btn" onclick="nextQuestion(2)">Às vezes</button>
+            <button class="option-btn" onclick="nextQuestion(3)">Frequentemente</button>
+            <button class="option-btn" onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
         </div>
     </div>
 
     <!-- Pergunta 4 -->
     <div class="question" data-index="4">
         <h2>Pergunta 4 de 4</h2>
-        <p>Tens tendência a interromper os outros quando estão a falar ou a responder antes que a pergunta termine?</p>
+        <p class="question-text">Tens tendência a interromper os outros quando estão a falar ou a responder antes que a pergunta termine?</p>
         <div class="btn-container">
-            <button onclick="nextQuestion(0)">Nunca</button>
-            <button onclick="nextQuestion(1)">Raramente</button>
-            <button onclick="nextQuestion(2)">Às vezes</button>
-            <button onclick="nextQuestion(3)">Frequentemente</button>
-            <button onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
+            <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
+            <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
+            <button class="option-btn" onclick="nextQuestion(2)">Às vezes</button>
+            <button class="option-btn" onclick="nextQuestion(3)">Frequentemente</button>
+            <button class="option-btn" onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
         </div>
     </div>
 
-    <!-- Ecrã de Resultados -->
+    <!-- Ecrã de Resultados Dinâmico -->
     <div class="question" id="result-screen">
-        <h2>O teu resultado está pronto!</h2>
-        <p>Identificámos alguns padrões nas tuas respostas que merecem uma análise mais detalhada e personalizada.</p>
-        <p>Clica no botão abaixo para partilhares o teu resultado comigo no WhatsApp e conversarmos sobre o próximo passo.</p>
+        <h2>O teu resultado está pronto</h2>
+        <p style="font-size: 15px; color: var(--text-muted);">Com base nas tuas respostas, a tua probabilidade atual é:</p>
         
-        <a href="https://wa.me/351910219672?text=Olá%20Susana!%20Acabei%20de%20fazer%20o%20teste%20de%20PHDA%20no%20teu%20site%20e%20gostaria%20de%20falar%20contigo." 
-           class="whatsapp-btn" target="_blank">
-            Enviar Resultado por WhatsApp
+        <div id="probability-badge" class="result-badge">A calcular...</div>
+        
+        <p style="font-size: 15px; line-height: 1.6;">Clica no botão abaixo para partilhares este resultado comigo no WhatsApp e conversarmos sobre o próximo passo ideal para ti.</p>
+        
+        <a href="#" id="whatsapp-link" class="whatsapp-btn" target="_blank">
+            Enviar Resultado por WhatsApp 💬
         </a>
         
-        <p class="disclaimer">Nota: Este teste é uma ferramenta de rastreio inicial e não substitui uma avaliação clínica ou diagnóstico médico.</p>
+        <p class="disclaimer">Nota: Este teste é uma ferramenta de rastreio inicial e não substitui uma avaliação clínica ou diagnóstico médico realizado por um profissional de saúde.</p>
     </div>
 </div>
 
@@ -179,18 +220,39 @@
     function nextQuestion(points) {
         score += points;
         
-        // Esconde a pergunta atual
         document.querySelector(`.question[data-index="${currentStep}"]`).classList.remove('active');
-        
         currentStep++;
         
         if (currentStep <= totalQuestions) {
-            // Mostra a próxima pergunta
             document.querySelector(`.question[data-index="${currentStep}"]`).classList.add('active');
             updateProgress();
         } else {
-            // Mostra ecrã final
             document.getElementById('progress').style.width = '100%';
+            
+            let probability = "";
+            let badgeClass = "";
+            
+            if (score <= 5) {
+                probability = "Baixa";
+                badgeClass = "prob-baixa";
+            } else if (score <= 11) {
+                probability = "Moderada";
+                badgeClass = "prob-moderada";
+            } else {
+                probability = "Elevada";
+                badgeClass = "prob-elevada";
+            }
+            
+            const badge = document.getElementById('probability-badge');
+            badge.innerText = "Probabilidade " + probability;
+            badge.className = "result-badge " + badgeClass;
+            
+            const numeroTelefone = "351910219672";
+            const mensagemTexto = "Olá Susana! Acabei de fazer o teste de PHDA no teu site. A minha probabilidade de ser PHDA deu: " + probability + " (" + score + " em 16 pontos). Gostaria de conversar sobre o próximo passo.";
+            
+            const linkWhatsApp = "https://wa.me/" + numeroTelefone + "?text=" + encodeURIComponent(mensagemTexto);
+            document.getElementById('whatsapp-link').href = linkWhatsApp;
+            
             document.getElementById('result-screen').classList.add('active');
         }
     }
