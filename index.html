@@ -57,16 +57,16 @@
         .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             margin-top: 25px;
         }
 
         button {
-            padding: 14px;
+            padding: 12px;
             border: 2px solid #e2e8f0;
             border-radius: 8px;
             background: white;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.2s ease;
             color: var(--text-color);
@@ -99,46 +99,59 @@
 <div class="quiz-container">
     <div class="progress-bar"><div class="progress" id="progress"></div></div>
 
+    <!-- Pergunta 1 -->
     <div class="question active" data-index="1">
         <h2>Pergunta 1 de 4</h2>
         <p>Com que frequência tens dificuldade em manter a concentração em tarefas repetitivas ou aborrecidas?</p>
         <div class="btn-container">
-            <button onclick="nextQuestion(0)">Nunca / Raramente</button>
-            <button onclick="nextQuestion(1)">Às vezes</button>
-            <button onclick="nextQuestion(2)">Frequentemente / Muito frequentemente</button>
+            <button onclick="nextQuestion(0)">Nunca</button>
+            <button onclick="nextQuestion(1)">Raramente</button>
+            <button onclick="nextQuestion(2)">Às vezes</button>
+            <button onclick="nextQuestion(3)">Frequentemente</button>
+            <button onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
         </div>
     </div>
 
+    <!-- Pergunta 2 -->
     <div class="question" data-index="2">
         <h2>Pergunta 2 de 4</h2>
         <p>Com que frequência te esqueces de compromissos, tarefas diárias ou de onde deixaste objetos importantes?</p>
         <div class="btn-container">
-            <button onclick="nextQuestion(0)">Nunca / Raramente</button>
-            <button onclick="nextQuestion(1)">Às vezes</button>
-            <button onclick="nextQuestion(2)">Frequentemente / Muito frequentemente</button>
+            <button onclick="nextQuestion(0)">Nunca</button>
+            <button onclick="nextQuestion(1)">Raramente</button>
+            <button onclick="nextQuestion(2)">Às vezes</button>
+            <button onclick="nextQuestion(3)">Frequentemente</button>
+            <button onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
         </div>
     </div>
 
+    <!-- Pergunta 3 -->
     <div class="question" data-index="3">
         <h2>Pergunta 3 de 4</h2>
         <p>Sentes uma necessidade constante de te mexer, mexer as mãos/pés ou sentes uma agitação interior difícil de controlar?</p>
         <div class="btn-container">
-            <button onclick="nextQuestion(0)">Nunca / Raramente</button>
-            <button onclick="nextQuestion(1)">Às vezes</button>
-            <button onclick="nextQuestion(2)">Frequentemente / Muito frequentemente</button>
+            <button onclick="nextQuestion(0)">Nunca</button>
+            <button onclick="nextQuestion(1)">Raramente</button>
+            <button onclick="nextQuestion(2)">Às vezes</button>
+            <button onclick="nextQuestion(3)">Frequentemente</button>
+            <button onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
         </div>
     </div>
 
+    <!-- Pergunta 4 -->
     <div class="question" data-index="4">
         <h2>Pergunta 4 de 4</h2>
         <p>Tens tendência a interromper os outros quando estão a falar ou a responder antes que a pergunta termine?</p>
         <div class="btn-container">
-            <button onclick="nextQuestion(0)">Nunca / Raramente</button>
-            <button onclick="nextQuestion(1)">Às vezes</button>
-            <button onclick="nextQuestion(2)">Frequentemente / Muito frequentemente</button>
+            <button onclick="nextQuestion(0)">Nunca</button>
+            <button onclick="nextQuestion(1)">Raramente</button>
+            <button onclick="nextQuestion(2)">Às vezes</button>
+            <button onclick="nextQuestion(3)">Frequentemente</button>
+            <button onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
         </div>
     </div>
 
+    <!-- Ecrã de Resultados -->
     <div class="question" id="result-screen">
         <h2>O teu resultado está pronto!</h2>
         <p>Identificámos alguns padrões nas tuas respostas que merecem uma análise mais detalhada e personalizada.</p>
