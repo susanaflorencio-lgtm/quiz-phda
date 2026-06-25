@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rastreio de PHDA | Susana Coelho Florêncio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-color: #ffffff;
-            --text-main: #2b2b2b;
-            --text-muted: #666666;
-            --border-color: #cccccc;
-            --accent-slate: #2c3e50; /* Tom azul-escuro sóbrio */
+            --text-main: #222222;    
+            --text-muted: #666666;   
+            --border-color: #cccccc; 
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             display: flex;
@@ -33,35 +37,33 @@
             text-align: center;
         }
 
-        /* Cabeçalhos estilo minimalista/caixa-alta igual ao site */
         h2 { 
-            font-size: 13px; 
+            font-size: 11px; 
             text-transform: uppercase; 
-            letter-spacing: 2px; 
+            letter-spacing: 3px; 
             color: var(--text-muted);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             font-weight: 400;
         }
         
-        /* Texto da pergunta */
         p.question-text {
-            font-size: 17px;
-            line-height: 1.6;
+            font-size: 16px;
+            line-height: 1.7;
             color: var(--text-main);
-            margin-bottom: 35px;
+            margin-bottom: 40px;
+            font-weight: 400;
         }
         
         .progress-bar {
-            height: 3px;
-            background-color: #eaeaea;
-            border-radius: 2px;
-            margin-bottom: 40px;
+            height: 2px;
+            background-color: #eeeeee;
+            margin-bottom: 45px;
             overflow: hidden;
         }
 
         .progress {
             height: 100%;
-            background-color: var(--accent-slate);
+            background-color: var(--text-main); 
             width: 0%;
             transition: width 0.4s ease;
         }
@@ -76,61 +78,52 @@
             margin-top: 25px;
         }
 
-        /* Botões ovais idênticos aos menus da imagem image_72e7a2.png */
         button.option-btn {
-            padding: 12px 24px;
+            padding: 14px 24px;
             border: 1px solid var(--border-color);
-            border-radius: 30px;
+            border-radius: 40px;
             background: #ffffff;
-            font-size: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             color: var(--text-main);
         }
 
         button.option-btn:hover {
             border-color: #000000;
-            background-color: #f9f9f9;
+            background-color: #fcfcfc;
         }
 
-        /* Distintivos de resultado minimalistas */
-        .result-badge {
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: bold;
-            margin: 25px 0;
-            padding: 12px 25px;
-            border-radius: 30px;
-            display: inline-block;
-        }
-        
-        .prob-baixa { color: #2e7d32; border: 1px solid #a7f3d0; background-color: #f0fdf4; }
-        .prob-moderada { color: #b7791f; border: 1px solid #fef08a; background-color: #fefce8; }
-        .prob-elevada { color: #c53030; border: 1px solid #fecaca; background-color: #fef2f2; }
-
-        /* Botão do WhatsApp adaptado ao formato oval da tua identidade */
         .whatsapp-btn {
             background-color: #25D366;
             color: white;
             border: none;
-            font-size: 13px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             font-weight: bold;
             text-decoration: none;
-            padding: 14px 30px;
-            border-radius: 30px;
+            padding: 16px 35px;
+            border-radius: 40px;
             display: inline-block;
             margin-top: 25px;
             transition: background 0.2s;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.15);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
         }
 
         .whatsapp-btn:hover { background-color: #128C7E; }
-        .disclaimer { font-size: 11px; color: var(--text-muted); margin-top: 35px; line-height: 1.5; }
+        
+        .disclaimer { 
+            font-size: 11px; 
+            color: var(--text-muted); 
+            margin-top: 40px; 
+            line-height: 1.6;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -138,7 +131,6 @@
 <div class="quiz-container">
     <div class="progress-bar"><div class="progress" id="progress"></div></div>
 
-    <!-- Pergunta 1 -->
     <div class="question active" data-index="1">
         <h2>Pergunta 1 de 4</h2>
         <p class="question-text">Com que frequência tens dificuldade em manter a concentração em tarefas repetitivas ou aborrecidas?</p>
@@ -151,7 +143,6 @@
         </div>
     </div>
 
-    <!-- Pergunta 2 -->
     <div class="question" data-index="2">
         <h2>Pergunta 2 de 4</h2>
         <p class="question-text">Com que frequência te esqueces de compromissos, tarefas diárias ou de onde deixaste objetos importantes?</p>
@@ -164,7 +155,6 @@
         </div>
     </div>
 
-    <!-- Pergunta 3 -->
     <div class="question" data-index="3">
         <h2>Pergunta 3 de 4</h2>
         <p class="question-text">Sentes uma necessidade constante de te mexer, mexer as mãos/pés ou sentes uma agitação interior difícil de controlar?</p>
@@ -177,7 +167,6 @@
         </div>
     </div>
 
-    <!-- Pergunta 4 -->
     <div class="question" data-index="4">
         <h2>Pergunta 4 de 4</h2>
         <p class="question-text">Tens tendência a interromper os outros quando estão a falar ou a responder antes que a pergunta termine?</p>
@@ -190,20 +179,17 @@
         </div>
     </div>
 
-    <!-- Ecrã de Resultados Dinâmico -->
     <div class="question" id="result-screen">
-        <h2>O teu resultado está pronto</h2>
-        <p style="font-size: 15px; color: var(--text-muted);">Com base nas tuas respostas, a tua probabilidade atual é:</p>
-        
-        <div id="probability-badge" class="result-badge">A calcular...</div>
-        
-        <p style="font-size: 15px; line-height: 1.6;">Clica no botão abaixo para partilhares este resultado comigo no WhatsApp e conversarmos sobre o próximo passo ideal para ti.</p>
+        <h2>Respostas Processadas</h2>
+        <p style="font-size: 15px; line-height: 1.7; color: var(--text-main); margin-top: 20px;">
+            O teu perfil de respostas foi calculado. Para receberes a tua avaliação de probabilidade e conversarmos sobre os próximos passos, clica no botão abaixo.
+        </p>
         
         <a href="#" id="whatsapp-link" class="whatsapp-btn" target="_blank">
-            Enviar Resultado por WhatsApp 💬
+            Submeter Teste e Ver Resultado 💬
         </a>
         
-        <p class="disclaimer">Nota: Este teste é uma ferramenta de rastreio inicial e não substitui uma avaliação clínica ou diagnóstico médico realizado por um profissional de saúde.</p>
+        <p class="disclaimer">Nota: Este teste é uma ferramenta de rastreio inicial e não substitui uma avaliação clínica ou diagnóstico médico.</p>
     </div>
 </div>
 
@@ -230,25 +216,18 @@
             document.getElementById('progress').style.width = '100%';
             
             let probability = "";
-            let badgeClass = "";
             
             if (score <= 5) {
                 probability = "Baixa";
-                badgeClass = "prob-baixa";
             } else if (score <= 11) {
                 probability = "Moderada";
-                badgeClass = "prob-moderada";
             } else {
                 probability = "Elevada";
-                badgeClass = "prob-elevada";
             }
             
-            const badge = document.getElementById('probability-badge');
-            badge.innerText = "Probabilidade " + probability;
-            badge.className = "result-badge " + badgeClass;
-            
             const numeroTelefone = "351910219672";
-            const mensagemTexto = "Olá Susana! Acabei de fazer o teste de PHDA no teu site. A minha probabilidade de ser PHDA deu: " + probability + " (" + score + " em 16 pontos). Gostaria de conversar sobre o próximo passo.";
+            // AQUI É ONDE A MÁGICA ACONTECE: O texto muda sozinho conforme os pontos!
+            const mensagemTexto = "Olá Susana! Acabei de fazer o teste de Rastreio de PHDA no teu site. Gostaria de receber a minha avaliação. [Código do Resultado Interno: Probabilidade " + probability + " - Pontuação: " + score + " de 16]";
             
             const linkWhatsApp = "https://wa.me/" + numeroTelefone + "?text=" + encodeURIComponent(mensagemTexto);
             document.getElementById('whatsapp-link').href = linkWhatsApp;
