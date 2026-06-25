@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rastreio de PHDA | Susana Coelho Florêncio</title>
     
-    <!-- Fonte Montserrat para alinhar com o design do site -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +37,7 @@
             text-align: center;
         }
 
-        /* Número da pergunta em Negrito */
+        /* Títulos em Negrito */
         h2 { 
             font-size: 11px; 
             text-transform: uppercase; 
@@ -80,7 +79,7 @@
             margin-top: 25px;
         }
 
-        /* Opções de resposta ovais e em Negrito */
+        /* Botões Ovais e Respostas em Negrito */
         button.option-btn {
             padding: 14px 24px;
             border: 1px solid var(--border-color);
@@ -135,10 +134,9 @@
 <div class="quiz-container">
     <div class="progress-bar"><div class="progress" id="progress"></div></div>
 
-    <!-- Pergunta 1 -->
     <div class="question active" data-index="1">
-        <h2>Pergunta 1 de 4</h2>
-        <p class="question-text">Com que frequência tens dificuldade em manter a concentração em tarefas repetitivas ou aborrecidas?</p>
+        <h2>Pergunta 1 de 5</h2>
+        <p class="question-text">Com que frequência tens dificuldade em manter a concentração em tarefas longas, leituras complexas ou projetos que exijam um esforço mental prolongado?</p>
         <div class="btn-container">
             <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
             <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
@@ -148,10 +146,9 @@
         </div>
     </div>
 
-    <!-- Pergunta 2 -->
     <div class="question" data-index="2">
-        <h2>Pergunta 2 de 4</h2>
-        <p class="question-text">Com que frequência te esqueces de compromissos, tarefas diárias ou de onde deixaste objetos importantes?</p>
+        <h2>Pergunta 2 de 5</h2>
+        <p class="question-text">Com que frequência encontras dificuldades em organizar as tuas tarefas diárias, priorizar atividades, gerir o teu tempo ou cumprir prazos?</p>
         <div class="btn-container">
             <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
             <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
@@ -161,10 +158,9 @@
         </div>
     </div>
 
-    <!-- Pergunta 3 -->
     <div class="question" data-index="3">
-        <h2>Pergunta 3 de 4</h2>
-        <p class="question-text">Sentes uma necessidade constante de te mexer, mexer as mãos/pés ou sentes uma agitação interior difícil de controlar?</p>
+        <h2>Pergunta 3 de 5</h2>
+        <p class="question-text">Com que frequência te distrais facilmente com estímulos externos (sons, pensamentos) ou te esqueces de compromissos e rotinas diárias (como pagar contas ou ir a consultas)?</p>
         <div class="btn-container">
             <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
             <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
@@ -174,10 +170,9 @@
         </div>
     </div>
 
-    <!-- Pergunta 4 -->
     <div class="question" data-index="4">
-        <h2>Pergunta 4 de 4</h2>
-        <p class="question-text">Tens tendência a interromper os outros quando estão a falar ou a responder antes que a pergunta termine?</p>
+        <h2>Pergunta 4 de 5</h2>
+        <p class="question-text">Com que frequência sentes uma agitação interior, dificuldade em relaxar ou uma necessidade constante de estar em movimento, mesmo em situações onde devias estar em repouso?</p>
         <div class="btn-container">
             <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
             <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
@@ -187,7 +182,18 @@
         </div>
     </div>
 
-    <!-- Ecrã de Envio Otimizado -->
+    <div class="question" data-index="5">
+        <h2>Pergunta 5 de 5</h2>
+        <p class="question-text">Com que frequência dás por ti a agir ou a falar por impulso, a interromper os outros em conversas ou a responder antes que a outra pessoa termine de fazer a pergunta?</p>
+        <div class="btn-container">
+            <button class="option-btn" onclick="nextQuestion(0)">Nunca</button>
+            <button class="option-btn" onclick="nextQuestion(1)">Raramente</button>
+            <button class="option-btn" onclick="nextQuestion(2)">Às vezes</button>
+            <button class="option-btn" onclick="nextQuestion(3)">Frequentemente</button>
+            <button class="option-btn" onclick="nextQuestion(4)">Muito frequentemente / Sempre</button>
+        </div>
+    </div>
+
     <div class="question" id="result-screen">
         <h2 style="font-size: 13px;">Respostas Processadas</h2>
         <p style="font-size: 15px; line-height: 1.7; color: var(--text-main); margin-top: 20px;">
@@ -204,7 +210,7 @@
 
 <script>
     let currentStep = 1;
-    const totalQuestions = 4;
+    const totalQuestions = 5; // Atualizado para 5 perguntas
     let score = 0;
 
     function updateProgress() {
@@ -225,8 +231,8 @@
             document.getElementById('progress').style.width = '100%';
             
             const numeroTelefone = "351910219672";
-            // Mensagem ajustada para enviar apenas a pontuação numérica
-            const mensagemTexto = "Olá Susana! Acabei de fazer o teste de Rastreio de PHDA no teu site. Gostaria de receber a minha avaliação. [Código do Resultado Interno: Pontuação: " + score + " de 16]";
+            // Mensagem atualizada: agora reflete a escala até 20 pontos
+            const mensagemTexto = "Olá Susana! Acabei de fazer o teste de Rastreio de PHDA no teu site. Gostaria de receber a minha avaliação. [Código do Resultado Interno: Pontuação: " + score + " de 20]";
             
             const linkWhatsApp = "https://wa.me/" + numeroTelefone + "?text=" + encodeURIComponent(mensagemTexto);
             document.getElementById('whatsapp-link').href = linkWhatsApp;
